@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <title>Tents &amp; Trees</title>
+  <meta name="description" content="A small, friendly logic puzzle: give every tree a tent.">
+  <meta name="theme-color" content="#f3efe2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161d19" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Tents &amp; Trees">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <h1>Tents <span>&amp;</span> Trees</h1>
+      <div class="timer" id="timer" aria-label="Time">0:00</div>
+    </header>
+
+    <div class="levels" id="levels" role="group" aria-label="Puzzle size"></div>
+
+    <p class="msg" id="msg" aria-live="polite">Give every tree a tent.</p>
+
+    <div class="board-wrap">
+      <div class="board" id="board" role="grid" aria-label="Puzzle board"></div>
+      <div class="loading" id="loading" hidden>Pitching camp…</div>
+    </div>
+
+    <div class="toolbar" role="group" aria-label="Actions">
+      <button id="btn-undo" type="button"><span aria-hidden="true">↶</span>Undo</button>
+      <button id="btn-hint" type="button"><span aria-hidden="true">💡</span>Hint</button>
+      <button id="btn-check" type="button"><span aria-hidden="true">✓</span>Check</button>
+      <button id="btn-reset" type="button"><span aria-hidden="true">⟲</span>Reset</button>
+      <button id="btn-new" type="button" class="primary"><span aria-hidden="true">✦</span>New</button>
+    </div>
+
+    <div class="toggles" role="group" aria-label="Settings">
+      <button id="tg-auto" type="button" class="toggle" aria-pressed="false">Auto-grass</button>
+      <button id="tg-sound" type="button" class="toggle" aria-pressed="true">Sound</button>
+      <button id="tg-timer" type="button" class="toggle" aria-pressed="true">Timer</button>
+    </div>
+
+    <footer class="foot">
+      <button id="btn-daily" type="button" class="link">📅 Daily puzzle</button>
+      <button id="btn-share" type="button" class="link">🔗 Share</button>
+      <button id="btn-how" type="button" class="link">❓ How to play</button>
+      <button id="btn-stats" type="button" class="link">🏕️ Stats</button>
+      <p class="seed" id="seed"></p>
+    </footer>
+  </main>
+
+  <!-- How to play -->
+  <div class="overlay" id="ov-how" role="dialog" aria-modal="true" aria-labelledby="how-title">
+    <div class="card">
+      <h2 id="how-title">How to play</h2>
+      <ol class="rules">
+        <li>Every tree gets <b>one tent</b> right next to it (up, down, left or right, not corners).</li>
+        <li>Tents <b>never touch</b> each other, not even corner to corner.</li>
+        <li>The numbers show <b>how many tents</b> are in each row and column.</li>
+      </ol>
+      <div class="demo" id="demo" aria-hidden="true"></div>
+      <p class="small">Tap a square once for <b>grass</b> (a dot: "no tent here"), twice for a <b>tent</b>, three times to clear it. Stuck? The Hint button explains one step.</p>
+      <button type="button" class="primary wide" data-close>Got it</button>
+    </div>
+  </div>
+
+  <!-- Win -->
+  <div class="overlay" id="ov-win" role="dialog" aria-modal="true" aria-labelledby="win-title">
+    <div class="card center">
+      <div class="win-emoji" aria-hidden="true">🏕️</div>
+      <h2 id="win-title">Camp is ready!</h2>
+      <p id="win-text"></p>
+      <button type="button" class="primary wide" id="win-next">Next puzzle</button>
+      <button type="button" class="wide" data-close>Look at the board</button>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="overlay" id="ov-stats" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+    <div class="card">
+      <h2 id="stats-title">Your camp</h2>
+      <div id="stats-body"></div>
+      <button type="button" class="primary wide" data-close>Close</button>
+    </div>
+  </div>
+
+  <pre id="test-out" hidden></pre>
+
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

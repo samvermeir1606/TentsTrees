@@ -1,0 +1,16 @@
+{
+  "name": "Tents & Trees",
+  "short_name": "Tents & Trees",
+  "description": "A small, friendly logic puzzle: give every tree a tent.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f3efe2",
+  "theme_color": "#f3efe2",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
